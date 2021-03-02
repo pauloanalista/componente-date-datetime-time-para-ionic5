@@ -58,4 +58,18 @@ onGetValue(e){
 Fique a vontade para dar um Fork no repositório e testar conforme sua necessidade.
 
 ## Veja o componente em ação
-aqui vem a imagem
+![](https://github.com/pauloanalista/componente-date-datetime-time-para-ionic5/blob/main/tela.gif)
+
+# VEJA TAMBÉM
+## Grupo de Estudo no Telegram
+- [Participe gratuitamente do grupo de estudo](https://t.me/blogilovecode)
+
+## Cursos baratos!
+- [Meus cursos na Udemy](https://olha.la/udemy)
+- [Outros cursos](https://olha.la/cursos)
+
+## Fique ligado, acesse!
+- [Blog ILoveCode](https://ilovecode.com.br)
+
+## Novidades, cupons de descontos e cursos gratuitos
+https://olha.la/ilovecode-receber-cupons-novidades
