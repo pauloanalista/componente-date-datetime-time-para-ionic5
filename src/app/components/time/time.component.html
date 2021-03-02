@@ -1,0 +1,9 @@
+<ion-input 
+type="text" 
+[brmasker]="{mask:'99:99'}" 
+maxlength="5" 
+placeholder="00:00"
+(ionBlur)="validarTime(e)" 
+[(ngModel)]="data"
+></ion-input>
+         
