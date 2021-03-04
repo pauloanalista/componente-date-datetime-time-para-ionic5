@@ -10,6 +10,7 @@ import { Component, EventEmitter, Input, NgModule, OnInit, Output, Renderer2, Vi
 
 export class DatetimeComponent implements OnInit {
   @Output() onGetValue = new EventEmitter<any>();
+  @Output() onValid = new EventEmitter<boolean>();
 
   @Input("value")
   data: any;
@@ -28,8 +29,14 @@ export class DatetimeComponent implements OnInit {
       return;
     }
 
+    if (JSON.parse(this.required) == true && (this.data == null || this.data == undefined || this.data == '')) {
+      this.onGetValue.emit(this.data);
+      this.onValid.emit(false);
+      return;
+    }
+
     if (this.validateDate(this.data) == false) {
-      alert('data invalida');
+      this.onValid.emit(false);
       this.data = '';
       this.onGetValue.emit(this.data);
       return;
@@ -37,7 +44,7 @@ export class DatetimeComponent implements OnInit {
 
     let dataFormatada = this.convertToDateTime(this.data);
     this.onGetValue.emit(dataFormatada);
-
+    this.onValid.emit(true);
 
   }
 

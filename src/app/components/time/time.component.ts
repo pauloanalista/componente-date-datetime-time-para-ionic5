@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TimeComponent implements OnInit {
   @Output() onGetValue = new EventEmitter<any>();
+  @Output() onValid = new EventEmitter<boolean>();
 
   @Input("value")
   data: any;
@@ -21,9 +22,9 @@ export class TimeComponent implements OnInit {
 
   validarTime() {
     if (JSON.parse(this.required)==true && (this.data==undefined || this.data.length < 1 || this.data=='')){
-      alert('Horário inválido!');
       this.data='';
       this.onGetValue.emit(this.data); 
+      this.onValid.emit(false);
       return;
     }
 
@@ -36,11 +37,12 @@ export class TimeComponent implements OnInit {
       && parseInt(time[1], 10) <= 59;
 
     if (valid == false) {
-      alert('Horário inválido!');
       this.data='';
       this.onGetValue.emit(this.data); 
     }
+    
     this.onGetValue.emit(this.data); 
+    this.onValid.emit(valid);
     return valid;
   }
 }

@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class DateComponent implements OnInit {
 
   @Output() onGetValue = new EventEmitter<any>();
+  @Output() onValid = new EventEmitter<boolean>();
 
   @Input("value")
   data: any;
@@ -24,9 +25,16 @@ export class DateComponent implements OnInit {
       this.onGetValue.emit(this.data);
       return;
     }
+    
+    if (JSON.parse(this.required) == true && (this.data == null || this.data == undefined || this.data == '')) {
+      this.onGetValue.emit(this.data);
+      this.onValid.emit(false);
+      return;
+    }
 
     if (this.validateDate(this.data) == false) {
-      alert('data invalida');
+      this.onValid.emit(false);
+      //alert('data invalida');
       this.data = '';
       this.onGetValue.emit(this.data);
       return;
@@ -34,6 +42,7 @@ export class DateComponent implements OnInit {
 
     let dataFormatada = this.convertToDate(this.data)
     this.onGetValue.emit(dataFormatada);
+    this.onValid.emit(true);
   }
 
   validateDate(input_date) {
